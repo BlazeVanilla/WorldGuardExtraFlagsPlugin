@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import net.goldtreeservers.worldguardextraflags.blaze.BlazeUtil;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -68,6 +69,7 @@ public class PlaySoundsFlagHandler extends HandlerWrapper
 	
 	public void tick(Player player, ApplicableRegionSet set)
 	{
+		if(BlazeUtil.shouldBlazeSkyblockCancel(player.getLocation())) return;
 		this.check(player, set);
     }
 	

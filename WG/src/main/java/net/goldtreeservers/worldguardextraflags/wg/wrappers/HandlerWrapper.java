@@ -2,6 +2,7 @@ package net.goldtreeservers.worldguardextraflags.wg.wrappers;
 
 import java.util.Set;
 
+import net.goldtreeservers.worldguardextraflags.blaze.BlazeUtil;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -56,6 +57,9 @@ public abstract class HandlerWrapper extends Handler
 	@Override
 	public boolean onCrossBoundary(LocalPlayer localPlayer, com.sk89q.worldedit.util.Location from, com.sk89q.worldedit.util.Location to, ApplicableRegionSet toSet, Set<ProtectedRegion> entered, Set<ProtectedRegion> exited, MoveType moveType)
 	{
+
+		if(BlazeUtil.shouldBlazeSkyblockCancel(BukkitAdapter.adapt(to))) return true;
+
 		//It turns out that this is fired every time player moves
 		//The plugin flags assume already that nothing changes unless region is crossed, so ignore when there isn't a region change
 		//This optimization is already in place in the FVCH

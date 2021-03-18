@@ -2,6 +2,7 @@ package net.goldtreeservers.worldguardextraflags.listeners;
 
 import java.util.Set;
 
+import net.goldtreeservers.worldguardextraflags.blaze.BlazeUtil;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
@@ -33,6 +34,9 @@ public class BlockListener implements Listener
 	@EventHandler(ignoreCancelled = true)
 	public void onEntityBlockFormEvent(EntityBlockFormEvent event)
 	{
+
+		if(BlazeUtil.shouldBlazeSkyblockCancel(event.getBlock().getLocation())) return;
+
 		if (SupportedFeatures.isFrostwalkerSupported())
 		{
 			BlockState newState = event.getNewState();

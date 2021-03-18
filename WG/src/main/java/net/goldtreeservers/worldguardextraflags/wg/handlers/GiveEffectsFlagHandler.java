@@ -9,7 +9,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import net.goldtreeservers.worldguardextraflags.blaze.BlazeUtil;
 import org.bukkit.Location;
+import org.bukkit.entity.Blaze;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
@@ -78,6 +80,7 @@ public class GiveEffectsFlagHandler extends HandlerWrapper
 	@Override
 	public void tick(Player player, ApplicableRegionSet set)
 	{
+		if(BlazeUtil.shouldBlazeSkyblockCancel(player.getLocation())) return;
 		this.check(player, set);
 	}
 	

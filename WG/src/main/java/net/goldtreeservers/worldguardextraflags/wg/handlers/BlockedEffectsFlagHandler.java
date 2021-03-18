@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import net.goldtreeservers.worldguardextraflags.blaze.BlazeUtil;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -70,6 +71,9 @@ public class BlockedEffectsFlagHandler extends HandlerWrapper
 	@Override
 	public void tick(Player player, ApplicableRegionSet set)
 	{
+
+		if(BlazeUtil.shouldBlazeSkyblockCancel(player.getLocation())) return;
+
 		this.check(player, set);
 	}
 	
